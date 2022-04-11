@@ -42,4 +42,5 @@ public slots:
     virtual void onHideTitleBar(bool hide) = 0;
     virtual void onSetSnapToViewPort(bool snapToViewPort) = 0;
     virtual void onSetKeepStayingInViewPort(bool keepStayingInViewPort) = 0;
+    virtual void onSetSnappingThreshold(int snappingThreshold) = 0;
 };
