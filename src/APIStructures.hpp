@@ -35,6 +35,12 @@ namespace ModPlugPlayer {
         FMT_U8, FMT_S8, FMT_U16_LE, FMT_U16_BE, FMT_U16_NE, FMT_S16_LE, FMT_S16_BE, FMT_S16_NE
     };
 
+    enum class Repeat {
+        None = 0,
+        SingleTrack = 1,
+        PlayList = 2
+    };
+
     struct Version {
         unsigned int major = 0;
         unsigned int minor = 0;
