@@ -14,6 +14,8 @@ You should have received a copy of the GNU Lesser General Public License along w
 #include "PlayListDTOs.hpp"
 
 class PlayList{
+public:
+    virtual PlayListItem getCurrentItem() = 0;
 signals:
     void play(PlayListItem playListItem);
     void pause();
