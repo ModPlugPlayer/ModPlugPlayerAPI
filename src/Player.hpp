@@ -23,7 +23,7 @@ namespace ModPlugPlayer {
         virtual void previous() = 0;
         virtual void next() = 0;
         virtual void changeVolume(int volume) = 0;
-        virtual void changeRepeat(ModPlugPlayer::Repeat repeat) = 0;
+        virtual void changeRepeat(ModPlugPlayer::RepeatState repeat) = 0;
         virtual void setAlwaysOnTop(bool alwaysOnTop) = 0;
         virtual bool getAlwaysOnTop() const = 0;
         virtual void hideTitleBar(bool hide) = 0;
@@ -45,7 +45,7 @@ namespace ModPlugPlayer {
         virtual void onPrevious() = 0;
         virtual void onNext() = 0;
         virtual void onChangeVolume(int volume) = 0;
-        virtual void onChangeRepeat(ModPlugPlayer::Repeat repeat) = 0;
+        virtual void onChangeRepeat(ModPlugPlayer::RepeatState repeat) = 0;
         virtual void onSetAlwaysOnTop(bool alwaysOnTop) = 0;
         virtual void onHideTitleBar(bool hide) = 0;
         virtual void onSetSnapToViewPort(bool snapToViewPort) = 0;
