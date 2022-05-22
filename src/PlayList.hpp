@@ -23,11 +23,14 @@ signals:
     void stop();
     void next();
     void previous();
+    void clear();
 public slots:
+    virtual void onPlay(PlayListItem playListItem) = 0;
     virtual void onPlay() = 0;
     virtual void onPause() = 0;
     virtual void onResume() = 0;
     virtual void onStop() = 0;
     virtual void onNextSong() = 0;
     virtual void onPreviousSong() = 0;
+    virtual void onClear() = 0;
 };
