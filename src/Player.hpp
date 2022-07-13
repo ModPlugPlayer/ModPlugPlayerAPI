@@ -12,10 +12,12 @@ You should have received a copy of the GNU General Public License along with thi
 #pragma once
 #include <QObject>
 #include "APIStructures.hpp"
+#include <filesystem>
 
 namespace ModPlugPlayer {
     class Player {
     signals:
+        virtual void open(std::filesystem::path filePath) = 0;
         virtual void stop() = 0;
         virtual void play() = 0;
         virtual void pause() = 0;
@@ -23,6 +25,7 @@ namespace ModPlugPlayer {
         virtual void previous() = 0;
         virtual void next() = 0;
         virtual void changeVolume(int volume) = 0;
+        virtual void scrubTime(int position) = 0;
         virtual void changeRepeat(ModPlugPlayer::RepeatState repeat) = 0;
         virtual void setAlwaysOnTop(bool alwaysOnTop) = 0;
         virtual bool getAlwaysOnTop() const = 0;
@@ -38,6 +41,7 @@ namespace ModPlugPlayer {
         virtual bool isKeptStayingInViewPort() const = 0;
 
     public slots:
+        virtual void onOpen(std::filesystem::path filePath) = 0;
         virtual void onStop() = 0;
         virtual void onPlay() = 0;
         virtual void onPause() = 0;
@@ -45,6 +49,7 @@ namespace ModPlugPlayer {
         virtual void onPrevious() = 0;
         virtual void onNext() = 0;
         virtual void onChangeVolume(int volume) = 0;
+        virtual void onScrubTime(int position) = 0;
         virtual void onChangeRepeat(ModPlugPlayer::RepeatState repeat) = 0;
         virtual void onSetAlwaysOnTop(bool alwaysOnTop) = 0;
         virtual void onHideTitleBar(bool hide) = 0;
