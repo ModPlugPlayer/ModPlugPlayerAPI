@@ -12,8 +12,10 @@ You should have received a copy of the GNU Lesser General Public License along w
 #pragma once
 #include <QString>
 #include <filesystem>
+#include <QUuid>
 
 struct PlayListItem {
+    QUuid id;
     size_t itemNumber = 0;
     QString format;
     QString title;
