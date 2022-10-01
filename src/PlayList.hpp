@@ -13,17 +13,17 @@ You should have received a copy of the GNU Lesser General Public License along w
 #include <QObject>
 #include "PlayListDTOs.hpp"
 
-class PlayList{
+class PlayList {
 public:
     virtual PlayListItem getCurrentItem() = 0;
 signals:
-    void play(PlayListItem playListItem);
-    void pause();
-    void resume();
-    void stop();
-    void next();
-    void previous();
-    void clear();
+    virtual void play(PlayListItem playListItem) = 0;
+    virtual void pause() = 0;
+    virtual void resume() = 0;
+    virtual void stop() = 0;
+    virtual void next() = 0;
+    virtual void previous() = 0;
+    virtual void clear() = 0;
 public slots:
     virtual void onPlay(PlayListItem playListItem) = 0;
     virtual void onPlay() = 0;
