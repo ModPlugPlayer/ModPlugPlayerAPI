@@ -22,6 +22,11 @@ namespace ModPlugPlayer {
         StableRelease
     };
 
+    enum class PlayingMode {
+        SingleTrack,
+        PlayList
+    };
+
     enum class PlugInType {
         InputPlugIn,
         OutputPlugIn,
