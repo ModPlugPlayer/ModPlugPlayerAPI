@@ -13,6 +13,8 @@ You should have received a copy of the GNU Lesser General Public License along w
 #include <QObject>
 #include "PlayListDTOs.hpp"
 
+using namespace ModPlugPlayer;
+
 class PlayList {
 public:
     virtual PlayListItem getCurrentItem() = 0;
@@ -25,7 +27,7 @@ signals:
     virtual void previous() = 0;
     virtual void clear() = 0;
 public slots:
-    virtual void onPlay(PlayListItem playListItem) = 0;
+    virtual void onPlay(const QUuid playListItemId) = 0;
     virtual void onPlay() = 0;
     virtual void onPause() = 0;
     virtual void onResume() = 0;

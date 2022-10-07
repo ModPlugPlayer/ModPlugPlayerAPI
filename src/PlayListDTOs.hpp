@@ -14,13 +14,15 @@ You should have received a copy of the GNU Lesser General Public License along w
 #include <filesystem>
 #include <QUuid>
 
-struct PlayListItem {
-    QUuid id;
-    size_t itemNumber = 0;
-    QString format;
-    QString title;
-    std::filesystem::path filePath;
-    size_t duration = 0;
-};
+namespace ModPlugPlayer {
+    struct PlayListItem {
+        QUuid id;
+        size_t itemNumber = 0;
+        QString format;
+        QString title;
+        std::filesystem::path filePath;
+        size_t duration = 0;
+    };
+}
 
-using PlayListItems = QList<PlayListItem>;
+using PlayListItems = QList<ModPlugPlayer::PlayListItem>;
