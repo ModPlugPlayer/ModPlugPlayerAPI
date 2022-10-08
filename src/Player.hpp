@@ -18,20 +18,21 @@ You should have received a copy of the GNU General Public License along with thi
 namespace ModPlugPlayer {
     class Player {
     signals:
-        virtual void open(std::filesystem::path filePath) = 0;
+        virtual void open(const std::filesystem::path filePath) = 0;
+        virtual void open(const PlayListItem playListItem) = 0;
         virtual void stop() = 0;
         virtual void play() = 0;
         virtual void pause() = 0;
         virtual void resume() = 0;
         virtual void previous() = 0;
         virtual void next() = 0;
-        virtual void changeVolume(int volume) = 0;
-        virtual void scrubTime(int position) = 0;
-        virtual void changeRepeat(ModPlugPlayer::RepeatState repeat) = 0;
-        virtual void setAlwaysOnTop(bool alwaysOnTop) = 0;
-        virtual void hideTitleBar(bool hide) = 0;
-        virtual void snapToViewPort(bool toBeSnappedToViewPort) = 0;
-        virtual void keepStayingInViewPort(bool toBeKeptStayingInViewPort) = 0;
+        virtual void changeVolume(const int volume) = 0;
+        virtual void scrubTime(const int position) = 0;
+        virtual void changeRepeat(const ModPlugPlayer::RepeatState repeat) = 0;
+        virtual void setAlwaysOnTop(const bool alwaysOnTop) = 0;
+        virtual void hideTitleBar(const bool hide) = 0;
+        virtual void snapToViewPort(const bool toBeSnappedToViewPort) = 0;
+        virtual void keepStayingInViewPort(const bool toBeKeptStayingInViewPort) = 0;
 
     public:
         virtual int getVolume() const = 0;
@@ -41,22 +42,22 @@ namespace ModPlugPlayer {
         virtual bool isKeptStayingInViewPort() const = 0;
 
     public slots:
-        virtual void onOpen(std::filesystem::path filePath) = 0;
-        virtual void onOpen(PlayListItem playListItem) = 0;
+        virtual void onOpen(const std::filesystem::path filePath) = 0;
+        virtual void onOpen(const PlayListItem playListItem) = 0;
         virtual void onStop() = 0;
         virtual void onPlay() = 0;
         virtual void onPause() = 0;
         virtual void onResume() = 0;
         virtual void onPrevious() = 0;
         virtual void onNext() = 0;
-        virtual void onChangeVolume(int volume) = 0;
-        virtual void onScrubTime(int position) = 0;
-        virtual void onChangeRepeat(ModPlugPlayer::RepeatState repeat) = 0;
-        virtual void onSetAlwaysOnTop(bool alwaysOnTop) = 0;
-        virtual void onHideTitleBar(bool hide) = 0;
-        virtual void onSetSnapToViewPort(bool snapToViewPort) = 0;
-        virtual void onSetKeepStayingInViewPort(bool keepStayingInViewPort) = 0;
-        virtual void onSetSnappingThreshold(int snappingThreshold) = 0;
+        virtual void onChangeVolume(const int volume) = 0;
+        virtual void onScrubTime(const int position) = 0;
+        virtual void onChangeRepeat(const ModPlugPlayer::RepeatState repeat) = 0;
+        virtual void onSetAlwaysOnTop(const bool alwaysOnTop) = 0;
+        virtual void onHideTitleBar(const bool hide) = 0;
+        virtual void onSetSnapToViewPort(const bool snapToViewPort) = 0;
+        virtual void onSetKeepStayingInViewPort(const bool keepStayingInViewPort) = 0;
+        virtual void onSetSnappingThreshold(const int snappingThreshold) = 0;
     };
 }
 
