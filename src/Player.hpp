@@ -177,6 +177,11 @@ namespace ModPlugPlayer {
         virtual void onStop() = 0;
 
         /*!
+         * \brief onStop
+         */
+        virtual void onStop(const PlayListItem playListItem) = 0;
+
+        /*!
          * \brief onPlay
          */
         virtual void onPlay() = 0;
@@ -193,9 +198,19 @@ namespace ModPlugPlayer {
         virtual void onPause() = 0;
 
         /*!
+         * \brief onPause
+         */
+        virtual void onPause(const PlayListItem playListItem) = 0;
+
+        /*!
          * \brief onResume
          */
         virtual void onResume() = 0;
+
+        /*!
+         * \brief onResume
+         */
+        virtual void onResume(const PlayListItem playListItem) = 0;
 
         /*!
          * \brief onPrevious
