@@ -12,6 +12,7 @@ You should have received a copy of the GNU Lesser General Public License along w
 #pragma once
 #include <QObject>
 #include "PlayListDTOs.hpp"
+#include "APIStructures.hpp"
 
 namespace ModPlugPlayer {
     class PlayList {
@@ -55,6 +56,12 @@ namespace ModPlugPlayer {
          * This signal is not used currently since there is not any stop button on playlist items.
          */
         virtual void stop(const PlayListItem playListItem) = 0;
+
+        /*!
+         * \brief repeat is expected to be emitted when repeat state is needed to be changed.
+         * \param repeatState represents the repeat state that is needed to be set. Possible values: None, SingleTrack, PlayList.
+         */
+        virtual void repeat(const RepeatState repeatState) = 0;
 
     public slots:
         /*!
@@ -111,6 +118,12 @@ namespace ModPlugPlayer {
          * \brief onClear is expected to clear the playlist, and to make the player stop and unload the current song.
          */
         virtual void onClear() = 0;
+
+        /*!
+         * \brief onRepeat is expected to handle new playlist state when playlist state is changed.
+         * \param repeatState represents the repeat state that is needed to be set. Possible values: None, SingleTrack, PlayList.
+         */
+        virtual void onRepeat(const RepeatState repeatState) = 0;
     };
 }
 
