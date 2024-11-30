@@ -17,11 +17,17 @@ You should have received a copy of the GNU General Public License along with thi
 
 namespace ModPlugPlayer {
     struct ModuleInfo {
-        boost::uuids::uuid id;
         std::string songTitle;
-        std::filesystem::path filePath;
-        std::string fileExtension;
+        std::string artist;
+        std::string moduleFormat;
+        std::string moduleFormatName;
         size_t songDuration;
+    };
+
+    struct ModuleFileInfo {
+        boost::uuids::uuid id;
+        std::filesystem::path filePath;
+        ModuleInfo moduleInfo;
     };
 
     enum class Stage {
