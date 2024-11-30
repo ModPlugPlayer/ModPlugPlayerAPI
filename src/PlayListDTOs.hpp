@@ -12,11 +12,11 @@ You should have received a copy of the GNU Lesser General Public License along w
 #pragma once
 #include <QString>
 #include <filesystem>
-#include <QUuid>
+#include <boost/uuid/uuid.hpp>
 
 namespace ModPlugPlayer {
     struct PlayListItem {
-        QUuid id;
+        boost::uuids::uuid id;
         size_t itemNumber = 0;
         QString format;
         QString title;

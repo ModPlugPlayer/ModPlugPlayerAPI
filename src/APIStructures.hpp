@@ -12,8 +12,18 @@ You should have received a copy of the GNU General Public License along with thi
 #pragma once
 #include <string>
 #include <sstream>
+#include <filesystem>
+#include <boost/uuid/uuid.hpp>
 
 namespace ModPlugPlayer {
+    struct ModuleInfo {
+        boost::uuids::uuid id;
+        std::string songTitle;
+        std::filesystem::path filePath;
+        std::string fileExtension;
+        size_t songDuration;
+    };
+
     enum class Stage {
         PreAlpha,
         Alpha,
