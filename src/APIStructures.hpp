@@ -66,6 +66,14 @@ namespace ModPlugPlayer {
         PlayList = 2
     };
 
+    enum class InterpolationState {
+        NoInterpolation = 0,
+        Linear = 1,
+        Cubic = 2,
+        Sinc = 3,
+        SincPlusLowPass = 4
+    };
+
     struct Version {
         unsigned int major = 0;
         unsigned int minor = 0;
