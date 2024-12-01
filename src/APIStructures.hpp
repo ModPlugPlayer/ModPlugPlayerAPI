@@ -66,6 +66,21 @@ namespace ModPlugPlayer {
         PlayList = 2
     };
 
+    inline RepeatState& operator++(RepeatState& state, int) {
+        switch(state) {
+        case RepeatState::None:
+            state = RepeatState::SingleTrack;
+            break;
+        case RepeatState::SingleTrack:
+            state = RepeatState::PlayList;
+            break;
+        case RepeatState::PlayList:
+            state = RepeatState::None;
+            break;
+        }
+        return state;
+    }
+
     enum class InterpolationState {
         NoInterpolation = 0,
         Linear = 1,
@@ -73,6 +88,27 @@ namespace ModPlugPlayer {
         Sinc = 3,
         SincPlusLowPass = 4
     };
+
+    inline InterpolationState& operator++(InterpolationState& state) {
+        switch(state) {
+        case InterpolationState::NoInterpolation:
+            state = InterpolationState::Linear;
+            break;
+        case InterpolationState::Linear:
+            state = InterpolationState::Cubic;
+            break;
+        case InterpolationState::Cubic:
+            state = InterpolationState::Sinc;
+            break;
+        case InterpolationState::Sinc:
+            state = InterpolationState::SincPlusLowPass;
+            break;
+        case InterpolationState::SincPlusLowPass:
+            state = InterpolationState::NoInterpolation;
+            break;
+        }
+        return state;
+    }
 
     struct Version {
         unsigned int major = 0;
