@@ -89,7 +89,7 @@ namespace ModPlugPlayer {
         SincPlusLowPass = 4
     };
 
-    inline InterpolationState& operator++(InterpolationState& state) {
+    inline InterpolationState& operator++(InterpolationState& state, int) {
         switch(state) {
         case InterpolationState::NoInterpolation:
             state = InterpolationState::Linear;
