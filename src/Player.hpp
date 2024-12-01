@@ -104,6 +104,12 @@ namespace ModPlugPlayer {
         virtual void changeRepeat(const ModPlugPlayer::RepeatState repeat) = 0;
 
         /*!
+         * \brief changeEq
+         * \param activated
+         */
+        virtual void changeEq(const bool activated) = 0;
+
+        /*!
          * \brief setAlwaysOnTop
          * \param alwaysOnTop
          */
@@ -239,6 +245,12 @@ namespace ModPlugPlayer {
          * \param repeat
          */
         virtual void onChangeRepeat(const ModPlugPlayer::RepeatState repeat) = 0;
+
+        /*!
+         * \brief onChangeEq
+         * \param activated
+         */
+        virtual void onChangeEq(const bool activated) = 0;
 
         /*!
          * \brief onSetAlwaysOnTop
