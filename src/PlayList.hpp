@@ -58,10 +58,10 @@ namespace ModPlugPlayer {
         virtual void stop(const PlayListItem playListItem) = 0;
 
         /*!
-         * \brief repeat is expected to be emitted when repeat state is needed to be changed.
-         * \param repeatState represents the repeat state that is needed to be set. Possible values: None, SingleTrack, PlayList.
+         * \brief repeat is expected to be emitted when repeat mode is needed to be changed.
+         * \param repeatMode represents the repeat mode that is needed to be set. Possible values: None, SingleTrack, PlayList.
          */
-        virtual void repeat(const RepeatState repeatState) = 0;
+        virtual void repeat(const RepeatMode repeatMode) = 0;
 
     public slots:
         /*!
@@ -121,9 +121,9 @@ namespace ModPlugPlayer {
 
         /*!
          * \brief onRepeat is expected to handle new playlist state when playlist state is changed.
-         * \param repeatState represents the repeat state that is needed to be set. Possible values: None, SingleTrack, PlayList.
+         * \param repeatMode represents the repeat mode that is needed to be set. Possible values: None, SingleTrack, PlayList.
          */
-        virtual void onRepeat(const RepeatState repeatState) = 0;
+        virtual void onRepeat(const RepeatMode repeatMode) = 0;
     };
 }
 
