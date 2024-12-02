@@ -18,28 +18,55 @@ You should have received a copy of the GNU General Public License along with thi
 namespace ModPlugPlayer {
     class Player {
     signals:
-        virtual void open(const std::filesystem::path filePath) = 0;
-        virtual void open(const PlayListItem playListItem) = 0;
-        virtual void stop() = 0;
-        virtual void stop(const PlayListItem playListItem) = 0;
-        virtual void play() = 0;
-        virtual void play(const PlayListItem playListItem) = 0;
-        virtual void pause() = 0;
-        virtual void pause(const PlayListItem playListItem) = 0;
-        virtual void resume() = 0;
-        virtual void resume(const PlayListItem playListItem) = 0;
+        //Request Signals
+        virtual void openRequested(const std::filesystem::path filePath) = 0;
+        virtual void openRequested(const PlayListItem playListItem) = 0;
+        virtual void stopRequested() = 0;
+        virtual void stopRequested(const PlayListItem playListItem) = 0;
+        virtual void playRequested() = 0;
+        virtual void playRequested(const PlayListItem playListItem) = 0;
+        virtual void pauseRequested() = 0;
+        virtual void pauseRequested(const PlayListItem playListItem) = 0;
+        virtual void resumeRequested() = 0;
+        virtual void resumeRequested(const PlayListItem playListItem) = 0;
+        virtual void previousRequested() = 0;
+        virtual void nextRequested() = 0;
+        virtual void volumeChangeRequested(const int volume) = 0;
+        virtual void timeScrubbingRequested(const int position) = 0;
+        virtual void repeatModeChangeRequested(const ModPlugPlayer::RepeatMode repeatMode) = 0;
+        virtual void eqStateChangeRequested(const bool activated) = 0;
+        virtual void interpolationModeChangeRequested(const ModPlugPlayer::InterpolationMode interpolationMode) = 0;
+        virtual void alwaysOnTopStateChangeRequested(const bool alwaysOnTop) = 0;
+        virtual void titleBarHidingStateChangeRequested(const bool hide) = 0;
+        virtual void snapingToViewPortStateChangeRequested(const bool toBeSnappedToViewPort) = 0;
+        virtual void keepingStayingInViewPortStateChangeRequested(const bool toBeKeptStayingInViewPort) = 0;
+
+        //Response Signals
+        virtual void loaded(const std::filesystem::path filePath, bool successfull) = 0;
+        virtual void loaded(const PlayListItem playListItem, bool successfull) = 0;
+        virtual void stopped() = 0;
+        virtual void stopped(const PlayListItem playListItem) = 0;
+        virtual void playingStarted() = 0;
+        virtual void playingStarted(const PlayListItem playListItem) = 0;
+        virtual void paused() = 0;
+        virtual void paused(const PlayListItem playListItem) = 0;
+        virtual void resumed() = 0;
+        virtual void resumed(const PlayListItem playListItem) = 0;
         virtual void previous() = 0;
         virtual void next() = 0;
-        virtual void changeVolume(const int volume) = 0;
-        virtual void scrubTime(const int position) = 0;
-        virtual void changeRepeat(const ModPlugPlayer::RepeatState repeat) = 0;
-        virtual void changeEq(const bool activated) = 0;
-        virtual void setAlwaysOnTop(const bool alwaysOnTop) = 0;
-        virtual void hideTitleBar(const bool hide) = 0;
-        virtual void snapToViewPort(const bool toBeSnappedToViewPort) = 0;
-        virtual void keepStayingInViewPort(const bool toBeKeptStayingInViewPort) = 0;
+        virtual void volumeChanged(const int volume) = 0;
+        virtual void timeScrubbed(const int position) = 0;
+        virtual void repeatModeChanged(const ModPlugPlayer::RepeatMode repeat) = 0;
+        virtual void eqStateChanged(const bool activated) = 0;
+        virtual void interpolationModeChanged(const ModPlugPlayer::InterpolationMode interpolationMode) = 0;
+        virtual void alwaysOnTopStateChanged(const bool alwaysOnTop) = 0;
+        virtual void titleBarHidingStateChanged(const bool hide) = 0;
+        virtual void snappingToViewPortStateChanged(const bool snapToViewPort) = 0;
+        virtual void keepingStayingInViewPortStateChanged(const bool toBeKeptStayingInViewPort) = 0;
+
 
     public:
+        //Getter Methods
         virtual int getVolume() const = 0;
         virtual bool isAlwaysOnTop() const = 0;
         virtual bool isTitleBarHidden() const = 0;
@@ -47,28 +74,32 @@ namespace ModPlugPlayer {
         virtual bool isKeptStayingInViewPort() const = 0;
 
     public slots:
-        virtual void onOpen(const std::filesystem::path filePath) = 0;
-        virtual void onOpen(const PlayListItem playListItem) = 0;
-        virtual void onStop() = 0;
-        virtual void onStop(const PlayListItem playListItem) = 0;
-        virtual void onPlay() = 0;
-        virtual void onPlay(const PlayListItem playListItem) = 0;
-        virtual void onPause() = 0;
-        virtual void onPause(const PlayListItem playListItem) = 0;
-        virtual void onResume() = 0;
-        virtual void onResume(const PlayListItem playListItem) = 0;
-        virtual void onPrevious() = 0;
-        virtual void onNext() = 0;
-        virtual void onChangeVolume(const int volume) = 0;
-        virtual void onScrubTime(const int position) = 0;
+        //Signal Handlers
+        virtual void onLoaded(const std::filesystem::path filePath, bool successfull) = 0;
+        virtual void onLoaded(const PlayListItem playListItem, bool successfull) = 0;
 
-        virtual void onChangeRepeat(const ModPlugPlayer::RepeatState repeat) = 0;
-        virtual void onChangeEq(const bool activated) = 0;
-        virtual void onSetAlwaysOnTop(const bool alwaysOnTop) = 0;
-        virtual void onHideTitleBar(const bool hide) = 0;
-        virtual void onSetSnapToViewPort(const bool snapToViewPort) = 0;
-        virtual void onSetKeepStayingInViewPort(const bool keepStayingInViewPort) = 0;
-        virtual void onSetSnappingThreshold(const int snappingThreshold) = 0;
+        //Request Signal Handlers
+        virtual void onStopRequested() = 0;
+        virtual void onStopRequested(const PlayListItem playListItem) = 0;
+        virtual void onPlayRequested() = 0;
+        virtual void onPlayRequested(const PlayListItem playListItem) = 0;
+        virtual void onPauseRequested() = 0;
+        virtual void onPauseRequested(const PlayListItem playListItem) = 0;
+        virtual void onResumeRequested() = 0;
+        virtual void onResumeRequested(const PlayListItem playListItem) = 0;
+        virtual void onPreviousRequested() = 0;
+        virtual void onNextRequested() = 0;
+        virtual void onVolumeChangeRequested(const int volume) = 0;
+        virtual void onTimeScrubbingRequested(const int position) = 0;
+
+        virtual void onRepeatModeChangeRequested(const ModPlugPlayer::RepeatMode repeatMode) = 0;
+        virtual void onEqStateChangeRequested(const bool activated) = 0;
+        virtual void onInterpolationModeChangeRequested(const ModPlugPlayer::InterpolationMode interpolationMode) = 0;
+        virtual void onAlwaysOnTopStateChangeRequested(const bool alwaysOnTop) = 0;
+        virtual void onTitleBarHidingStateChangeRequested(const bool hide) = 0;
+        virtual void onSnappingToViewPortStateChangeRequested(const bool snapToViewPort) = 0;
+        virtual void onKeepingStayingInViewPortStateChangeRequested(const bool keepStayingInViewPort) = 0;
+        virtual void onSnappingThresholdChangeRequested(const int snappingThreshold) = 0;
     };
 }
 

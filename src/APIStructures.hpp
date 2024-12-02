@@ -60,28 +60,28 @@ namespace ModPlugPlayer {
         FMT_U8, FMT_S8, FMT_U16_LE, FMT_U16_BE, FMT_U16_NE, FMT_S16_LE, FMT_S16_BE, FMT_S16_NE
     };
 
-    enum class RepeatState {
+    enum class RepeatMode {
         None = 0,
         SingleTrack = 1,
         PlayList = 2
     };
 
-    inline RepeatState& operator++(RepeatState& state, int) {
+    inline RepeatMode& operator++(RepeatMode& state, int) {
         switch(state) {
-        case RepeatState::None:
-            state = RepeatState::SingleTrack;
+        case RepeatMode::None:
+            state = RepeatMode::SingleTrack;
             break;
-        case RepeatState::SingleTrack:
-            state = RepeatState::PlayList;
+        case RepeatMode::SingleTrack:
+            state = RepeatMode::PlayList;
             break;
-        case RepeatState::PlayList:
-            state = RepeatState::None;
+        case RepeatMode::PlayList:
+            state = RepeatMode::None;
             break;
         }
         return state;
     }
 
-    enum class InterpolationState {
+    enum class InterpolationMode {
         NoInterpolation = 0,
         Linear = 1,
         Cubic = 2,
@@ -89,22 +89,22 @@ namespace ModPlugPlayer {
         SincPlusLowPass = 4
     };
 
-    inline InterpolationState& operator++(InterpolationState& state, int) {
+    inline InterpolationMode& operator++(InterpolationMode& state, int) {
         switch(state) {
-        case InterpolationState::NoInterpolation:
-            state = InterpolationState::Linear;
+        case InterpolationMode::NoInterpolation:
+            state = InterpolationMode::Linear;
             break;
-        case InterpolationState::Linear:
-            state = InterpolationState::Cubic;
+        case InterpolationMode::Linear:
+            state = InterpolationMode::Cubic;
             break;
-        case InterpolationState::Cubic:
-            state = InterpolationState::Sinc;
+        case InterpolationMode::Cubic:
+            state = InterpolationMode::Sinc;
             break;
-        case InterpolationState::Sinc:
-            state = InterpolationState::SincPlusLowPass;
+        case InterpolationMode::Sinc:
+            state = InterpolationMode::SincPlusLowPass;
             break;
-        case InterpolationState::SincPlusLowPass:
-            state = InterpolationState::NoInterpolation;
+        case InterpolationMode::SincPlusLowPass:
+            state = InterpolationMode::NoInterpolation;
             break;
         }
         return state;
