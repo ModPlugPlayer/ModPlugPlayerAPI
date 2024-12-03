@@ -30,6 +30,108 @@ namespace ModPlugPlayer {
         ModuleInfo moduleInfo;
     };
 
+
+    enum class PlayerState {
+        Playing,
+        Paused,
+        Stopped
+    };
+
+    enum class SongState {
+        Loaded,
+        NotLoaded,
+        Error
+    };
+
+    enum class SampleRate:int {
+        Hz8000=8000,
+        Hz9600=9600,
+        Hz11025=11025,
+        Hz12000=12000,
+        Hz16000=16000,
+        Hz22050=22050,
+        Hz24000=24000,
+        Hz32000=32000,
+        Hz44100=44100,
+        Hz48000=48000,
+        Hz88200=88200,
+        Hz96000=96000,
+        Hz192000=192000
+    };
+
+    enum class BitRate:int {
+        Bits8 = 8,
+        Bits16 = 16,
+        Bits24 = 24,
+        Bits32 = 32
+    };
+
+
+    enum class RepeatMode {
+        None = 0,
+        SingleTrack = 1,
+        PlayList = 2
+    };
+
+    inline RepeatMode& operator++(RepeatMode& state, int) {
+        switch(state) {
+        case RepeatMode::None:
+            state = RepeatMode::SingleTrack;
+            break;
+        case RepeatMode::SingleTrack:
+            state = RepeatMode::PlayList;
+            break;
+        case RepeatMode::PlayList:
+            state = RepeatMode::None;
+            break;
+        }
+        return state;
+    }
+
+    enum class InterpolationFilter:int {
+        Internal = 0, //default
+        NoInterpolation = 1, //(zero order hold)
+        LinearInterpolation = 2,
+        CubicInterpolation = 4,
+        WindowedSincWith8Taps = 8
+    };
+
+    inline InterpolationFilter& operator++(InterpolationFilter& state, int) {
+        switch(state) {
+        case InterpolationFilter::Internal:
+            state = InterpolationFilter::NoInterpolation;
+            break;
+        case InterpolationFilter::NoInterpolation:
+            state = InterpolationFilter::LinearInterpolation;
+            break;
+        case InterpolationFilter::LinearInterpolation:
+            state = InterpolationFilter::CubicInterpolation;
+            break;
+        case InterpolationFilter::CubicInterpolation:
+            state = InterpolationFilter::WindowedSincWith8Taps;
+            break;
+        case InterpolationFilter::WindowedSincWith8Taps:
+            state = InterpolationFilter::Internal;
+            break;
+        }
+        return state;
+    }
+
+    enum class AmigaFilterType:int {
+        Auto = 0,
+        Amiga500 = 500,
+        Amiga1200 = 1200,
+        Unfiltered = -1,
+        DisablePaulaEmulation = -2
+    };
+
+    enum class WindowFunction :int {
+        None = 0,
+        HanningWindow = 1,
+        HammingWindow = 2,
+        BlackmanWindow = 3
+    };
+
     enum class Stage {
         PreAlpha,
         Alpha,
@@ -59,56 +161,6 @@ namespace ModPlugPlayer {
     {
         FMT_U8, FMT_S8, FMT_U16_LE, FMT_U16_BE, FMT_U16_NE, FMT_S16_LE, FMT_S16_BE, FMT_S16_NE
     };
-
-    enum class RepeatMode {
-        None = 0,
-        SingleTrack = 1,
-        PlayList = 2
-    };
-
-    inline RepeatMode& operator++(RepeatMode& state, int) {
-        switch(state) {
-        case RepeatMode::None:
-            state = RepeatMode::SingleTrack;
-            break;
-        case RepeatMode::SingleTrack:
-            state = RepeatMode::PlayList;
-            break;
-        case RepeatMode::PlayList:
-            state = RepeatMode::None;
-            break;
-        }
-        return state;
-    }
-
-    enum class InterpolationMode {
-        NoInterpolation = 0,
-        Linear = 1,
-        Cubic = 2,
-        Sinc = 3,
-        SincPlusLowPass = 4
-    };
-
-    inline InterpolationMode& operator++(InterpolationMode& state, int) {
-        switch(state) {
-        case InterpolationMode::NoInterpolation:
-            state = InterpolationMode::Linear;
-            break;
-        case InterpolationMode::Linear:
-            state = InterpolationMode::Cubic;
-            break;
-        case InterpolationMode::Cubic:
-            state = InterpolationMode::Sinc;
-            break;
-        case InterpolationMode::Sinc:
-            state = InterpolationMode::SincPlusLowPass;
-            break;
-        case InterpolationMode::SincPlusLowPass:
-            state = InterpolationMode::NoInterpolation;
-            break;
-        }
-        return state;
-    }
 
     struct Version {
         unsigned int major = 0;

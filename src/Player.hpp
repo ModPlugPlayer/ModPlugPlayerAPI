@@ -11,7 +11,7 @@ You should have received a copy of the GNU General Public License along with thi
 
 #pragma once
 #include <QObject>
-#include "APIStructures.hpp"
+#include <APIStructures.hpp>
 #include "PlayListDTOs.hpp"
 #include <filesystem>
 
@@ -39,7 +39,7 @@ namespace ModPlugPlayer {
         virtual void xBassStateChangeRequested(const bool activated) = 0;
         virtual void surroundStateChangeRequested(const bool activated) = 0;
         virtual void reverbStateChangeRequested(const bool activated) = 0;
-        virtual void interpolationModeChangeRequested(const ModPlugPlayer::InterpolationMode interpolationMode) = 0;
+        virtual void interpolationFilterChangeRequested(const ModPlugPlayer::InterpolationFilter interpolationFilter) = 0;
         virtual void alwaysOnTopStateChangeRequested(const bool alwaysOnTop) = 0;
         virtual void titleBarHidingStateChangeRequested(const bool hide) = 0;
         virtual void snapingToViewPortStateChangeRequested(const bool toBeSnappedToViewPort) = 0;
@@ -60,13 +60,13 @@ namespace ModPlugPlayer {
         virtual void next() = 0;
         virtual void volumeChanged(const int volume) = 0;
         virtual void timeScrubbed(const int position) = 0;
-        virtual void repeatModeChanged(const ModPlugPlayer::RepeatMode repeat) = 0;
+        virtual void repeatModeChanged(const RepeatMode repeat) = 0;
         virtual void eqStateChanged(const bool activated) = 0;
         virtual void agcStateChanged(const bool activated) = 0;
         virtual void xBassStateChanged(const bool activated) = 0;
         virtual void surroundStateChanged(const bool activated) = 0;
         virtual void reverbStateChanged(const bool activated) = 0;
-        virtual void interpolationModeChanged(const ModPlugPlayer::InterpolationMode interpolationMode) = 0;
+        virtual void interpolationFilterChanged(const InterpolationFilter interpolationFilter) = 0;
         virtual void alwaysOnTopStateChanged(const bool alwaysOnTop) = 0;
         virtual void titleBarHidingStateChanged(const bool hide) = 0;
         virtual void snappingToViewPortStateChanged(const bool snapToViewPort) = 0;
@@ -100,13 +100,13 @@ namespace ModPlugPlayer {
         virtual void onVolumeChangeRequested(const int volume) = 0;
         virtual void onTimeScrubbingRequested(const int position) = 0;
 
-        virtual void onRepeatModeChangeRequested(const ModPlugPlayer::RepeatMode repeatMode) = 0;
+        virtual void onRepeatModeChangeRequested(const RepeatMode repeatMode) = 0;
         virtual void onEqStateChangeRequested(const bool activated) = 0;
         virtual void onAGCStateChangeRequested(const bool activated) = 0;
         virtual void onXBassStateChangeRequested(const bool activated) = 0;
         virtual void onSurroundStateChangeRequested(const bool activated) = 0;
         virtual void onReverbStateChangeRequested(const bool activated) = 0;
-        virtual void onInterpolationModeChangeRequested(const ModPlugPlayer::InterpolationMode interpolationMode) = 0;
+        virtual void onInterpolationFilterChangeRequested(const InterpolationFilter interpolationFilter) = 0;
         virtual void onAlwaysOnTopStateChangeRequested(const bool alwaysOnTop) = 0;
         virtual void onTitleBarHidingStateChangeRequested(const bool hide) = 0;
         virtual void onSnappingToViewPortStateChangeRequested(const bool snapToViewPort) = 0;
