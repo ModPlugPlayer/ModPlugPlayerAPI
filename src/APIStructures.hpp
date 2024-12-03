@@ -68,21 +68,25 @@ namespace ModPlugPlayer {
 
 
     enum class RepeatMode {
-        None = 0,
-        SingleTrack = 1,
-        PlayList = 2
+        NoRepeat = 0,
+        RepeatTrack = 1,
+        LoopTrack = 2,
+        RepeatPlayList = 3
     };
 
     inline RepeatMode& operator++(RepeatMode& state, int) {
         switch(state) {
-        case RepeatMode::None:
-            state = RepeatMode::SingleTrack;
+        case RepeatMode::NoRepeat:
+            state = RepeatMode::RepeatTrack;
             break;
-        case RepeatMode::SingleTrack:
-            state = RepeatMode::PlayList;
+        case RepeatMode::RepeatTrack:
+            state = RepeatMode::LoopTrack;
             break;
-        case RepeatMode::PlayList:
-            state = RepeatMode::None;
+        case RepeatMode::LoopTrack:
+            state = RepeatMode::RepeatPlayList;
+            break;
+        case RepeatMode::RepeatPlayList:
+            state = RepeatMode::NoRepeat;
             break;
         }
         return state;
