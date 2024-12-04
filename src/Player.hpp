@@ -42,7 +42,7 @@ namespace ModPlugPlayer {
         virtual void interpolationFilterChangeRequested(const ModPlugPlayer::InterpolationFilter interpolationFilter) = 0;
         virtual void alwaysOnTopStateChangeRequested(const bool alwaysOnTop) = 0;
         virtual void titleBarHidingStateChangeRequested(const bool hide) = 0;
-        virtual void snapingToViewPortStateChangeRequested(const bool toBeSnappedToViewPort) = 0;
+        virtual void snappingToViewPortStateChangeRequested(const bool toBeSnappedToViewPort) = 0;
         virtual void keepingStayingInViewPortStateChangeRequested(const bool toBeKeptStayingInViewPort) = 0;
 
         //Response Signals
@@ -87,6 +87,8 @@ namespace ModPlugPlayer {
         virtual void onLoaded(const PlayListItem playListItem, bool successfull) = 0;
 
         //Request Signal Handlers
+        virtual void onOpenRequested(const std::filesystem::path filePath) = 0;
+        virtual void onOpenRequested(const PlayListItem playListItem) = 0;
         virtual void onStopRequested() = 0;
         virtual void onStopRequested(const PlayListItem playListItem) = 0;
         virtual void onPlayRequested() = 0;

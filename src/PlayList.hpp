@@ -24,106 +24,116 @@ namespace ModPlugPlayer {
         virtual PlayListItem getCurrentItem() = 0;
     signals:
         /*!
-         * \brief requestMetaData is expected to be emitted when an item is added to playlist or emitted for each item when playlist is loaded from file.
+         * \brief metaDataRequested is expected to be emitted when an item is added to playlist or emitted for each item when playlist is loaded from file.
          * \param playListItem
          */
-        virtual void requestMetaData(const PlayListItem playListItem) = 0;
+        virtual void metaDataRequested(const PlayListItem playListItem) = 0;
 
         /*!
-         * \brief open is expected to be emitted by onNextSong or onPreviousSong when next or previous item is requested.
+         * \brief loadRequested is expected to be emitted by onNextSong or onPreviousSong when next or previous item is requested.
          * \param playListItem
          */
-        virtual void open(const PlayListItem playListItem) = 0;
+        virtual void loadRequested(const PlayListItem playListItem) = 0;
 
         /*!
-         * \brief play is expected to be emitted when an item is double clicked or an item's play button is pressed
+         * \brief playRequested is expected to be emitted when an item is double clicked or an item's play button is pressed
          * \param playListItem
          */
-        virtual void play(const PlayListItem playListItem) = 0;
+        virtual void playRequested(const PlayListItem playListItem) = 0;
 
         /*!
-         * \brief pause is expected to be emitted when pause button of an playlist item is pressed.
+         * \brief pauseRequested is expected to be emitted when pause button of an playlist item is pressed.
          */
-        virtual void pause(const PlayListItem playListItem) = 0;
+        virtual void pauseRequested(const PlayListItem playListItem) = 0;
 
         /*!
-         * \brief resume is expected to be emitted when resume button of an playlist item is pressed.
+         * \brief resumeRequested is expected to be emitted when resume button of an playlist item is pressed.
          */
-        virtual void resume(const PlayListItem playListItem) = 0;
+        virtual void resumeRequested(const PlayListItem playListItem) = 0;
 
         /*!
-         * \brief stop is expected to be emitted when the playlist needs the player to stop the song.
+         * \brief stopRequested is expected to be emitted when the playlist needs the player to stop the song.
          * This signal is not used currently since there is not any stop button on playlist items.
          */
-        virtual void stop(const PlayListItem playListItem) = 0;
+        virtual void stopRequested(const PlayListItem playListItem) = 0;
 
         /*!
-         * \brief repeat is expected to be emitted when repeat mode is needed to be changed.
+         * \brief repeatRequested is expected to be emitted when repeat mode is needed to be changed.
          * \param repeatMode represents the repeat mode that is needed to be set. Possible values: None, SingleTrack, PlayList.
          */
-        virtual void repeat(const RepeatMode repeatMode) = 0;
+        virtual void repeatRequested(const RepeatMode repeatMode) = 0;
+
+        /*!
+         * \brief clearPlayListRequested is expected to be emitted when playlist is needed to be cleared.
+         */
+        virtual void clearPlayListRequested() = 0;
 
     public slots:
         /*!
-         * \brief onMetaData
+         * \brief onMetaDataObtained is expected to be triggered when the meta data of the playlist item is obtained by the player.
+         * When an item is added to the playlist, playlist issues metaDataRequested signal, and the related component (player or
+         * a component related to metadata reading) obtains the meta data, and then the related component issues metaDataObtained signal.
+         * onMetaDataObtained slot is expected to be connected another component's metaDataObtained signal.
          * \param playListItem
          */
-        virtual void onMetaData(const PlayListItem playListItem) = 0;
+        virtual void onMetaDataObtained(const PlayListItem playListItem) = 0;
 
         /*!
-         * \brief onOpen is expected to be triggered when the player opens the corresponding playlist item.
-         * Expected to make the corresponding playlist item on the playlist is shown as open (eg. showing it in bold fonts, etc.),
+         * \brief onLoaded is expected to be triggered after the player loads the corresponding playlist item.
+         * Expected to make the corresponding playlist item on the playlist is shown as loaded (eg. showing it in bold fonts, etc.),
          * and to make the previously opened item of the playlist unopened.
          * \param playListItem
+         * \param successfull
          */
-        virtual void onOpen(const PlayListItem playListItem) = 0;
+        virtual void onLoaded(const PlayListItem playListItem, bool successfull) = 0;
 
         /*!
-         * \brief onPlay is expected to be triggered when the player plays the corresponding playlist item.
+         * \brief onPlayingStarted is expected to be triggered when the player starts to play the corresponding playlist item.
          * Expected to make the corresponding playlist item on the playlist is shown as open and playing
          * (eg. showing it in bold fonts, making its icon as playing, etc.), and to make the previously opened item of the playlist unopened.
          * \param playListItem
          */
-        virtual void onPlay(const PlayListItem playListItem) = 0;
+        virtual void onPlayingStarted(const PlayListItem playListItem) = 0;
 
         /*!
-         * \brief onPause is expected to be triggered when the player pauses the corresponding playlist item.
+         * \brief onPaused is expected to be triggered when the player pauses the corresponding playlist item.
          * Expected to make the corresponding playlist item on the playlist is shown as paused.
          */
-        virtual void onPause(const PlayListItem playListItem) = 0;
+        virtual void onPaused(const PlayListItem playListItem) = 0;
 
         /*!
-         * \brief onResume is expected to be triggered when the player resumes the corresponding playlist item.
+         * \brief onResumed is expected to be triggered when the player resumes the corresponding playlist item.
          * Expected to make the corresponding playlist item on the playlist is shown as playing.
          */
-        virtual void onResume(const PlayListItem playListItem) = 0;
+        virtual void onResumed(const PlayListItem playListItem) = 0;
 
         /*!
-         * \brief onStop is expected to be triggered when the player stops the corresponding playlist item.
+         * \brief onStopped is expected to be triggered when the player stops the corresponding playlist item.
          * Expected to make the corresponding playlist item on the playlist is shown as stopped.
          */
-        virtual void onStop(const PlayListItem playListItem) = 0;
+        virtual void onStopped(const PlayListItem playListItem) = 0;
 
         /*!
-         * \brief onNextSong is expected to make the playlist to emit open signal with the next playlist item.
+         * \brief onNextRequested is expected to make the playlist to emit open signal with the next playlist item.
          */
-        virtual void onNextSong() = 0;
+        virtual void onNextRequested() = 0;
 
         /*!
-         * \brief onPreviousSong is expected to make the playlist to emit open signal with the previous playlist item.
+         * \brief onPreviousRequested is expected to make the playlist to emit open signal with the previous playlist item.
          */
-        virtual void onPreviousSong() = 0;
+        virtual void onPreviousRequested() = 0;
 
         /*!
-         * \brief onClear is expected to clear the playlist, and to make the player stop and unload the current song.
+         * \brief onClearPlayList is expected to clear the playlist, and to make the player stop and unload the current song.
          */
-        virtual void onClear() = 0;
+        virtual void onClearPlayListRequested() = 0;
 
         /*!
-         * \brief onRepeat is expected to handle new playlist state when playlist state is changed.
-         * \param repeatMode represents the repeat mode that is needed to be set. Possible values: None, SingleTrack, PlayList.
+         * \brief onRepeatModeChanged is expected to handle new playlist state when playlist state is changed.
+         * \param repeatMode represents the repeat mode that is needed to be set.
+         * Possible values: NoRepeat, RepeatTrack, LoopTrack, RepeatPlayList.
          */
-        virtual void onRepeat(const RepeatMode repeatMode) = 0;
+        virtual void onRepeatModeChanged(const RepeatMode repeatMode) = 0;
     };
 }
 
