@@ -35,10 +35,8 @@ namespace ModPlugPlayer {
         virtual void timeScrubbingRequested(const int position) = 0;
         virtual void repeatModeChangeRequested(const ModPlugPlayer::RepeatMode repeatMode) = 0;
         virtual void eqStateChangeRequested(const bool activated) = 0;
-        virtual void agcStateChangeRequested(const bool activated) = 0;
-        virtual void xBassStateChangeRequested(const bool activated) = 0;
-        virtual void surroundStateChangeRequested(const bool activated) = 0;
-        virtual void reverbStateChangeRequested(const bool activated) = 0;
+        virtual void dspStateChangeRequested(const bool activated) = 0;
+        virtual void amigaFilterChangeRequested(const AmigaFilter amigaFilter) = 0;
         virtual void interpolationFilterChangeRequested(const ModPlugPlayer::InterpolationFilter interpolationFilter) = 0;
         virtual void alwaysOnTopStateChangeRequested(const bool alwaysOnTop) = 0;
         virtual void titleBarHidingStateChangeRequested(const bool hide) = 0;
@@ -62,10 +60,8 @@ namespace ModPlugPlayer {
         virtual void timeScrubbed(const int position) = 0;
         virtual void repeatModeChanged(const RepeatMode repeat) = 0;
         virtual void eqStateChanged(const bool activated) = 0;
-        virtual void agcStateChanged(const bool activated) = 0;
-        virtual void xBassStateChanged(const bool activated) = 0;
-        virtual void surroundStateChanged(const bool activated) = 0;
-        virtual void reverbStateChanged(const bool activated) = 0;
+        virtual void dspStateChanged(const bool activated) = 0;
+        virtual void amigaFilterChanged(const AmigaFilter amigaFilter) = 0;
         virtual void interpolationFilterChanged(const InterpolationFilter interpolationFilter) = 0;
         virtual void alwaysOnTopStateChanged(const bool alwaysOnTop) = 0;
         virtual void titleBarHidingStateChanged(const bool hide) = 0;
@@ -104,10 +100,8 @@ namespace ModPlugPlayer {
 
         virtual void onRepeatModeChangeRequested(const RepeatMode repeatMode) = 0;
         virtual void onEqStateChangeRequested(const bool activated) = 0;
-        virtual void onAGCStateChangeRequested(const bool activated) = 0;
-        virtual void onXBassStateChangeRequested(const bool activated) = 0;
-        virtual void onSurroundStateChangeRequested(const bool activated) = 0;
-        virtual void onReverbStateChangeRequested(const bool activated) = 0;
+        virtual void onDSPStateChangeRequested(const bool activated) = 0;
+        virtual void onAmigaFilterChangeRequested(const AmigaFilter amigaFilter) = 0;
         virtual void onInterpolationFilterChangeRequested(const InterpolationFilter interpolationFilter) = 0;
         virtual void onAlwaysOnTopStateChangeRequested(const bool alwaysOnTop) = 0;
         virtual void onTitleBarHidingStateChangeRequested(const bool hide) = 0;

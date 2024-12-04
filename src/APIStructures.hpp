@@ -67,7 +67,7 @@ namespace ModPlugPlayer {
     };
 
 
-    enum class RepeatMode {
+    enum class RepeatMode:int {
         NoRepeat = 0,
         RepeatTrack = 1,
         LoopTrack = 2,
@@ -121,13 +121,32 @@ namespace ModPlugPlayer {
         return state;
     }
 
-    enum class AmigaFilterType:int {
+    enum class AmigaFilter:int {
         Auto = 0,
         Amiga500 = 500,
         Amiga1200 = 1200,
         Unfiltered = -1,
         DisablePaulaEmulation = -2
     };
+
+    inline AmigaFilter& operator++(AmigaFilter& state, int) {
+        switch(state) {
+            case AmigaFilter::Unfiltered:
+                state = AmigaFilter::Amiga500;
+                break;
+            case AmigaFilter::Amiga500:
+                state = AmigaFilter::Amiga1200;
+                break;
+            case AmigaFilter::Amiga1200:
+                state = AmigaFilter::DisablePaulaEmulation;
+                break;
+            default:
+                state = AmigaFilter::Amiga500;
+                break;
+            }
+        return state;
+    }
+
 
     enum class WindowFunction :int {
         None = 0,
