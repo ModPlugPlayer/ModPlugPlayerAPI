@@ -66,6 +66,14 @@ namespace ModPlugPlayer {
         Bits32 = 32
     };
 
+    enum class ChannelMode {
+        Mono,
+        Stereo,
+        Quadraphonic,
+        Pentaphonic,
+        Surround_5_1,
+        Surround_7_1
+    };
 
     enum class RepeatMode:int {
         NoRepeat = 0,
