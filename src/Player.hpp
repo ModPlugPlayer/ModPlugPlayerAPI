@@ -68,6 +68,10 @@ namespace ModPlugPlayer {
         virtual void snappingToViewPortStateChanged(const bool snapToViewPort) = 0;
         virtual void keepingStayingInViewPortStateChanged(const bool toBeKeptStayingInViewPort) = 0;
 
+        //Song signals
+        virtual void elapsedTimeChanged(const int seconds) = 0;
+        virtual void trackDurationChanged(const size_t songDurationSeconds) = 0;
+        virtual void trackTitleChanged(const QString songTitle) = 0;
 
     public:
         //Getter Methods
@@ -81,6 +85,7 @@ namespace ModPlugPlayer {
         //Signal Handlers
         virtual void onLoaded(const std::filesystem::path filePath, bool successfull) = 0;
         virtual void onLoaded(const PlayListItem playListItem, bool successfull) = 0;
+
 
         //Request Signal Handlers
         virtual void onOpenRequested(const std::filesystem::path filePath) = 0;
@@ -108,6 +113,10 @@ namespace ModPlugPlayer {
         virtual void onSnappingToViewPortStateChangeRequested(const bool snapToViewPort) = 0;
         virtual void onKeepingStayingInViewPortStateChangeRequested(const bool keepStayingInViewPort) = 0;
         virtual void onSnappingThresholdChangeRequested(const int snappingThreshold) = 0;
+
+        //Response Signal Handlers
+        virtual void onRepeatModeChanged(const RepeatMode repeatMode) = 0;
+
     };
 }
 

@@ -148,8 +148,11 @@ namespace ModPlugPlayer {
             case AmigaFilter::Amiga1200:
                 state = AmigaFilter::DisablePaulaEmulation;
                 break;
+            case AmigaFilter::DisablePaulaEmulation:
+                state = AmigaFilter::Unfiltered;
+                break;
             default:
-                state = AmigaFilter::Amiga500;
+                state = AmigaFilter::DisablePaulaEmulation;
                 break;
             }
         return state;
