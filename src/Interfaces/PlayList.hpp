@@ -14,7 +14,7 @@ You should have received a copy of the GNU Lesser General Public License along w
 #include "PlayListDTOs.hpp"
 #include "APIStructures.hpp"
 
-namespace ModPlugPlayer {
+namespace ModPlugPlayer::Interfaces {
     class PlayList {
     public:
         /*!
@@ -137,4 +137,4 @@ namespace ModPlugPlayer {
     };
 }
 
-Q_DECLARE_INTERFACE(ModPlugPlayer::PlayList, "PlayList")
+Q_DECLARE_INTERFACE(ModPlugPlayer::Interfaces::PlayList, "PlayList")

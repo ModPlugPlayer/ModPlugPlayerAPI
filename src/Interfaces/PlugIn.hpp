@@ -12,7 +12,7 @@ You should have received a copy of the GNU General Public License along with thi
 #pragma once
 #include "APIStructures.hpp"
 
-namespace ModPlugPlayer {
+namespace ModPlugPlayer::Interfaces {
     class PlugIn {
     public:
         inline PlugIn(void * mainWindow,const std::string &fileName);
@@ -35,14 +35,14 @@ namespace ModPlugPlayer {
     };
 }
 
-inline ModPlugPlayer::PlugIn::PlugIn(void * playerMainWindow, const std::string &plugInFileName)
+inline ModPlugPlayer::Interfaces::PlugIn::PlugIn(void * playerMainWindow, const std::string &plugInFileName)
     : plugInFileName(plugInFileName), playerMainWindow(playerMainWindow) {
 }
 
-inline bool ModPlugPlayer::PlugIn::isQtBasedPlugIn() const {
+inline bool ModPlugPlayer::Interfaces::PlugIn::isQtBasedPlugIn() const {
     return false;
 }
 
-inline void * ModPlugPlayer::PlugIn::getConfigFrame(void *) {
+inline void * ModPlugPlayer::Interfaces::PlugIn::getConfigFrame(void *) {
     return nullptr;
 }

@@ -12,10 +12,10 @@ You should have received a copy of the GNU General Public License along with thi
 #pragma once
 #include <QObject>
 #include <APIStructures.hpp>
-#include "PlayListDTOs.hpp"
+#include "../PlayListDTOs.hpp"
 #include <filesystem>
 
-namespace ModPlugPlayer {
+namespace ModPlugPlayer::Interfaces {
     class Player {
     signals:
         //Request Signals
@@ -36,8 +36,6 @@ namespace ModPlugPlayer {
         virtual void repeatModeChangeRequested(const ModPlugPlayer::RepeatMode repeatMode) = 0;
         virtual void eqStateChangeRequested(const bool activated) = 0;
         virtual void dspStateChangeRequested(const bool activated) = 0;
-        virtual void amigaFilterChangeRequested(const AmigaFilter amigaFilter) = 0;
-        virtual void interpolationFilterChangeRequested(const ModPlugPlayer::InterpolationFilter interpolationFilter) = 0;
         virtual void alwaysOnTopStateChangeRequested(const bool alwaysOnTop) = 0;
         virtual void titleBarHidingStateChangeRequested(const bool hide) = 0;
         virtual void snappingToViewPortStateChangeRequested(const bool toBeSnappedToViewPort) = 0;
@@ -61,8 +59,6 @@ namespace ModPlugPlayer {
         virtual void repeatModeChanged(const RepeatMode repeat) = 0;
         virtual void eqStateChanged(const bool activated) = 0;
         virtual void dspStateChanged(const bool activated) = 0;
-        virtual void amigaFilterChanged(const AmigaFilter amigaFilter) = 0;
-        virtual void interpolationFilterChanged(const InterpolationFilter interpolationFilter) = 0;
         virtual void alwaysOnTopStateChanged(const bool alwaysOnTop) = 0;
         virtual void titleBarHidingStateChanged(const bool hide) = 0;
         virtual void snappingToViewPortStateChanged(const bool snapToViewPort) = 0;
@@ -86,7 +82,6 @@ namespace ModPlugPlayer {
         virtual void onLoaded(const std::filesystem::path filePath, bool successfull) = 0;
         virtual void onLoaded(const PlayListItem playListItem, bool successfull) = 0;
 
-
         //Request Signal Handlers
         virtual void onOpenRequested(const std::filesystem::path filePath) = 0;
         virtual void onOpenRequested(const PlayListItem playListItem) = 0;
@@ -106,8 +101,6 @@ namespace ModPlugPlayer {
         virtual void onRepeatModeChangeRequested(const RepeatMode repeatMode) = 0;
         virtual void onEqStateChangeRequested(const bool activated) = 0;
         virtual void onDSPStateChangeRequested(const bool activated) = 0;
-        virtual void onAmigaFilterChangeRequested(const AmigaFilter amigaFilter) = 0;
-        virtual void onInterpolationFilterChangeRequested(const InterpolationFilter interpolationFilter) = 0;
         virtual void onAlwaysOnTopStateChangeRequested(const bool alwaysOnTop) = 0;
         virtual void onTitleBarHidingStateChangeRequested(const bool hide) = 0;
         virtual void onSnappingToViewPortStateChangeRequested(const bool snapToViewPort) = 0;
@@ -116,8 +109,7 @@ namespace ModPlugPlayer {
 
         //Response Signal Handlers
         virtual void onRepeatModeChanged(const RepeatMode repeatMode) = 0;
-
     };
 }
 
-Q_DECLARE_INTERFACE(ModPlugPlayer::Player, "Player")
+Q_DECLARE_INTERFACE(ModPlugPlayer::Interfaces::Player, "Player")

@@ -9,11 +9,10 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 You should have received a copy of the GNU General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
 */
 #pragma once
-#include "APIStructures.hpp"
+#include <APIStructures.hpp>
 #include "PlugIn.hpp"
-#include <string>
 
-namespace ModPlugPlayer {
+namespace ModPlugPlayer::Interfaces {
 class OutputPlugIn : public PlugIn {
     public:
         ///
