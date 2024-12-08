@@ -20,17 +20,21 @@ namespace ModPlugPlayer::Interfaces {
         virtual void amigaFilterChangeRequested(const AmigaFilter amigaFilter) = 0;
         virtual void interpolationFilterChangeRequested(const ModPlugPlayer::InterpolationFilter interpolationFilter) = 0;
 
-        //Response Signals
+        //Instant Signals
         virtual void amigaFilterChanged(const AmigaFilter amigaFilter) = 0;
         virtual void interpolationFilterChanged(const InterpolationFilter interpolationFilter) = 0;
-
-        //Song signals
+        virtual void moduleFormatChanged(const QString moduleFormat) = 0;
+        virtual void channelAmountChanged(const size_t channelAmount) = 0;
+        virtual void activeChannelAmountChanged(const size_t activeChannelAmount) = 0;
+        virtual void subSongAmountChanged(const size_t subSongAmount) = 0;
+        virtual void currentSubSongIndexChanged(const size_t currentSubSongIndex) = 0;
+        virtual void patternAmountChanged(const size_t patternAmount) = 0;
+        virtual void currentPatternIndexChanged(const size_t currentPatternIndex) = 0;
 
     public:
 
     public slots:
         //Signal Handlers
-
 
         //Request Signal Handlers
         virtual void onAmigaFilterChangeRequested(const AmigaFilter amigaFilter) = 0;
