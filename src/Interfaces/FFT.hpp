@@ -15,7 +15,7 @@ You should have received a copy of the GNU General Public License along with thi
 namespace ModPlugPlayer::Interfaces {
     template<class T> class FFT {
     public:
-        virtual void initialize() = 0;
+        virtual void initialize(size_t inputDataElementAmount) = 0;
         virtual void execute() = 0;
         virtual void close() = 0;
         ~FFT();
