@@ -28,6 +28,7 @@ namespace ModPlugPlayer {
         boost::uuids::uuid id;
         std::filesystem::path filePath;
         ModuleInfo moduleInfo;
+        bool successful = true;
     };
 
 
