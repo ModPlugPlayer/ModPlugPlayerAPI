@@ -68,6 +68,17 @@ namespace ModPlugPlayer::Interfaces {
          */
         virtual void clearPlayListRequested() = 0;
 
+        /*!
+         * \brief horizontalScrollBarVisibilityChanged is expected to be emitted when horizontal scrollbar becomes visible or invisible.
+         * \param isVisible is set to true if scrollbar is visible, false othervise.
+         */
+        virtual void horizontalScrollBarVisibilityChanged(bool isVisible) = 0;
+
+        /*!
+         * \brief verticalScrollBarVisibilityChanged is expected to be emitted when vertical scrollbar becomes visible or invisible.
+         * \param isVisible is set to true if scrollbar is visible, false othervise.
+         */
+        virtual void verticalScrollBarVisibilityChanged(bool isVisible) = 0;
     public slots:
         /*!
          * \brief onMetaDataObtained is expected to be triggered when the meta data of the playlist item is obtained by the player.
