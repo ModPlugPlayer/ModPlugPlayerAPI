@@ -22,6 +22,7 @@ namespace ModPlugPlayer {
         QString title;
         std::filesystem::path filePath;
         size_t duration = 0;
+        bool dirty = false;
     };
 }
 
