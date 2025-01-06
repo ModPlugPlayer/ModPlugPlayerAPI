@@ -14,6 +14,7 @@ You should have received a copy of the GNU General Public License along with thi
 #include <sstream>
 #include <filesystem>
 #include <boost/uuid/uuid.hpp>
+#include <boost/uuid/random_generator.hpp>
 
 namespace ModPlugPlayer {
     struct ModuleInfo {
@@ -25,7 +26,7 @@ namespace ModPlugPlayer {
     };
 
     struct ModuleFileInfo {
-        boost::uuids::uuid id;
+        boost::uuids::uuid id = boost::uuids::random_generator()();
         std::filesystem::path filePath;
         ModuleInfo moduleInfo;
         bool successful = true;

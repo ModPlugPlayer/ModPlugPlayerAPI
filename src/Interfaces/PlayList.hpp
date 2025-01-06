@@ -18,7 +18,7 @@ namespace ModPlugPlayer::Interfaces {
     class PlayList {
     public:
         /*!
-         * \brief getCurrentItem gets currently loaded item of the playlist.
+         * \brief getCurrentItem gets currently loaded item of the playlist (the item that is loaded to the player).
          * \return currently loaded item of the playlist.
          */
         virtual PlayListItem getCurrentItem() = 0;

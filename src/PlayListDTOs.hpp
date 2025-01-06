@@ -13,10 +13,11 @@ You should have received a copy of the GNU Lesser General Public License along w
 #include <QString>
 #include <filesystem>
 #include <boost/uuid/uuid.hpp>
+#include <boost/uuid/random_generator.hpp>
 
 namespace ModPlugPlayer {
     struct PlayListItem {
-        boost::uuids::uuid id;
+        boost::uuids::uuid id = boost::uuids::random_generator()();
         size_t itemNumber = 0;
         QString format;
         QString title;
