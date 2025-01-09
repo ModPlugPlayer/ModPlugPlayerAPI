@@ -13,6 +13,7 @@ You should have received a copy of the GNU Lesser General Public License along w
 #include <QObject>
 #include "PlayListDTOs.hpp"
 #include "APIStructures.hpp"
+#include "MetaDataReader.hpp"
 
 namespace ModPlugPlayer::Interfaces {
     class PlayList {
@@ -145,6 +146,12 @@ namespace ModPlugPlayer::Interfaces {
          * Possible values: NoRepeat, RepeatTrack, LoopTrack, RepeatPlayList.
          */
         virtual void onRepeatModeChanged(const RepeatMode repeatMode) = 0;
+
+        /*!
+         * \brief setMetaDataReader is expected to set MetaDataReader instance that playlist will use to read metadata of the songs.
+         * \param metaDataReader MetaDataReader instance to be used in order to read metadata of the songs.
+         */
+        virtual void setMetaDataReader(const MetaDataReader *metaDataReader) = 0;
     };
 }
 

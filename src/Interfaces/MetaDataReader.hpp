@@ -15,13 +15,6 @@ You should have received a copy of the GNU General Public License along with thi
 namespace ModPlugPlayer::Interfaces {
     class MetaDataReader {
     public:
-        MetaDataReader(const std::filesystem::path &filePath);
-        virtual ModPlugPlayer::SongFileInfo getMetaData() = 0;
-    protected:
-        std::filesystem::path filePath;
+        virtual ModPlugPlayer::SongFileInfo getMetaData(const std::filesystem::path &filePath) const = 0;
     };
-}
-
-inline ModPlugPlayer::Interfaces::MetaDataReader::MetaDataReader(const std::filesystem::path &filePath) {
-    this->filePath = filePath;
 }
