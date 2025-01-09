@@ -17,18 +17,18 @@ You should have received a copy of the GNU General Public License along with thi
 #include <boost/uuid/random_generator.hpp>
 
 namespace ModPlugPlayer {
-    struct ModuleInfo {
+    struct SongInfo {
         std::string songTitle;
         std::string artist;
-        std::string moduleFormat;
-        std::string moduleFormatName;
+        std::string songFormat;
+        std::string songFormatName;
         size_t songDuration;
     };
 
-    struct ModuleFileInfo {
+    struct SongFileInfo {
         boost::uuids::uuid id = boost::uuids::random_generator()();
         std::filesystem::path filePath;
-        ModuleInfo moduleInfo;
+        SongInfo songInfo;
         bool successful = true;
     };
 
