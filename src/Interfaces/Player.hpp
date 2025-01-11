@@ -78,10 +78,6 @@ namespace ModPlugPlayer::Interfaces {
         virtual bool isKeptStayingInViewPort() const = 0;
 
     public slots:
-        //Signal Handlers
-        virtual void onLoaded(const std::filesystem::path filePath, bool successfull) = 0;
-        virtual void onLoaded(const PlayListItem playListItem, bool successfull) = 0;
-
         //Request Signal Handlers
         virtual void onOpenRequested(const std::filesystem::path filePath) = 0;
         virtual void onOpenRequested(const PlayListItem playListItem) = 0;
@@ -108,7 +104,18 @@ namespace ModPlugPlayer::Interfaces {
         virtual void onKeepingStayingInViewPortStateChangeRequested(const bool keepStayingInViewPort) = 0;
         virtual void onSnappingThresholdChangeRequested(const int snappingThreshold) = 0;
 
+
         //Response Signal Handlers
+        virtual void onLoaded(const std::filesystem::path filePath, bool successfull) = 0;
+        virtual void onLoaded(const PlayListItem playListItem, bool successfull) = 0;
+        virtual void onPlayingStarted() = 0;
+        virtual void onPlayingStarted(const PlayListItem playListItem) = 0;
+        virtual void onStopped() = 0;
+        virtual void onStopped(const PlayListItem playListItem) = 0;
+        virtual void onPaused() = 0;
+        virtual void onPaused(const PlayListItem playListItem) = 0;
+        virtual void onResumed() = 0;
+        virtual void onResumed(const PlayListItem playListItem) = 0;
         virtual void onRepeatModeChanged(const RepeatMode repeatMode) = 0;
     };
 }
