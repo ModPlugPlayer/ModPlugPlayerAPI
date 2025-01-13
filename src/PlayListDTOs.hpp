@@ -14,15 +14,13 @@ You should have received a copy of the GNU Lesser General Public License along w
 #include <filesystem>
 #include <boost/uuid/uuid.hpp>
 #include <boost/uuid/random_generator.hpp>
+#include <APIStructures.hpp>
 
 namespace ModPlugPlayer {
     struct PlayListItem {
         boost::uuids::uuid id = boost::uuids::random_generator()();
         size_t itemNumber = 0;
-        QString format;
-        QString title;
-        std::filesystem::path filePath;
-        size_t duration = 0;
+        SongFileInfo songFileInfo;
         bool dirty = false;
     };
 }
