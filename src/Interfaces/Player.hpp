@@ -20,7 +20,6 @@ namespace ModPlugPlayer::Interfaces {
     signals:
         //Request Signals
         virtual void openRequested(const std::filesystem::path filePath) = 0;
-        virtual void openRequested(const PlayListItem playListItem) = 0;
         virtual void stopRequested() = 0;
         virtual void stopRequested(const PlayListItem playListItem) = 0;
         virtual void playRequested() = 0;
@@ -80,7 +79,6 @@ namespace ModPlugPlayer::Interfaces {
     public slots:
         //Request Signal Handlers
         virtual void onOpenRequested(const std::filesystem::path filePath) = 0;
-        virtual void onOpenRequested(const PlayListItem playListItem) = 0;
         virtual void onStopRequested() = 0;
         virtual void onStopRequested(const PlayListItem playListItem) = 0;
         virtual void onPlayRequested() = 0;

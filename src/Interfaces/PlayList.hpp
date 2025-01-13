@@ -31,12 +31,6 @@ namespace ModPlugPlayer::Interfaces {
         virtual void metaDataRequested(const PlayListItem playListItem) = 0;
 
         /*!
-         * \brief loadRequested is expected to be emitted by onNextSong or onPreviousSong when next or previous item is requested.
-         * \param playListItem
-         */
-        virtual void loadRequested(const PlayListItem playListItem) = 0;
-
-        /*!
          * \brief playRequested is expected to be emitted when an item is double clicked or an item's play button is pressed
          * \param playListItem
          */
