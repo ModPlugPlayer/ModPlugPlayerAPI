@@ -45,7 +45,7 @@ namespace ModPlugPlayer::Interfaces {
         virtual void loaded(const PlayListItem playListItem, bool successfull) = 0;
         virtual void stopped() = 0;
         virtual void stopped(const PlayListItem playListItem) = 0;
-        virtual void playingStarted() = 0;
+        virtual void playingStarted(SongFileInfo songFileInfo) = 0;
         virtual void playingStarted(const PlayListItem playListItem) = 0;
         virtual void paused() = 0;
         virtual void paused(const PlayListItem playListItem) = 0;
