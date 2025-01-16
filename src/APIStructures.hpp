@@ -132,11 +132,11 @@ namespace ModPlugPlayer {
     }
 
     enum class AmigaFilter:int {
-        Auto = 0,
+        Auto = 1,
         Amiga500 = 500,
         Amiga1200 = 1200,
-        Unfiltered = -1,
-        DisablePaulaEmulation = -2
+        Unfiltered = 0,
+        DisablePaulaEmulation = -1
     };
 
     inline AmigaFilter& operator++(AmigaFilter& state, int) {
