@@ -27,6 +27,7 @@ namespace ModPlugPlayer::Interfaces {
 
     public slots:
         //Request Signal Handlers
+        virtual void onOpenRequested() = 0;
         virtual void onOpenRequested(const std::filesystem::path filePath) = 0;
         virtual void onStopRequested() = 0;
         virtual void onStopRequested(const SongFileInfo songFileInfo) = 0;

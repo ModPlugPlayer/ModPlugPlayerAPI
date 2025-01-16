@@ -19,6 +19,7 @@ namespace ModPlugPlayer::Interfaces {
     class PlayerSignals {
     signals:
         //Request Signals
+        virtual void openRequested() = 0;
         virtual void openRequested(const std::filesystem::path filePath) = 0;
         virtual void stopRequested() = 0;
         virtual void stopRequested(const PlayListItem playListItem) = 0;
@@ -43,7 +44,7 @@ namespace ModPlugPlayer::Interfaces {
         virtual void interpolationFilterChangeRequested(const InterpolationFilter interpolationFilter) = 0;
 
         //Response Signals
-        virtual void loaded(const std::filesystem::path filePath, bool successfull) = 0;
+        virtual void loaded(const SongFileInfo songFileInfo, bool successfull) = 0;
         virtual void loaded(const PlayListItem playListItem, bool successfull) = 0;
         virtual void stopped() = 0;
         virtual void stopped(const PlayListItem playListItem) = 0;
