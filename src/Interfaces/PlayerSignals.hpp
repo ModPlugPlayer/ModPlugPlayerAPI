@@ -31,6 +31,8 @@ namespace ModPlugPlayer::Interfaces {
         virtual void resumeRequested(const PlayListItem playListItem) = 0;
         virtual void previousRequested() = 0;
         virtual void nextRequested() = 0;
+        virtual void rewindRequested() = 0;
+        virtual void fastForwardRequested() = 0;
         virtual void volumeChangeRequested(const int volume) = 0;
         virtual void timeScrubbingRequested(const int position) = 0;
         virtual void repeatModeChangeRequested(const ModPlugPlayer::RepeatMode repeatMode) = 0;
@@ -42,7 +44,7 @@ namespace ModPlugPlayer::Interfaces {
         virtual void keepingStayingInViewPortStateChangeRequested(const bool toBeKeptStayingInViewPort) = 0;
         virtual void amigaFilterChangeRequested(const AmigaFilter amigaFilter) = 0;
         virtual void interpolationFilterChangeRequested(const InterpolationFilter interpolationFilter) = 0;
-
+        virtual void setupRequested() = 0;
         //Response Signals
         virtual void loaded(const SongFileInfo songFileInfo, bool successfull) = 0;
         virtual void loaded(const PlayListItem playListItem, bool successfull) = 0;

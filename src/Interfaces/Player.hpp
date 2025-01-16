@@ -45,9 +45,13 @@ namespace ModPlugPlayer::Interfaces {
         virtual void onPreviousRequested(const PlayListItem playListItem) = 0;
         virtual void onNextRequested() = 0;
         virtual void onNextRequested(const PlayListItem playListItem) = 0;
+        virtual void onRewindRequested() = 0;
+        virtual void onFastForwardRequested() = 0;
+
         virtual void onVolumeChangeRequested(const int volume) = 0;
         virtual void onTimeScrubbingRequested(const int position) = 0;
         virtual void onTimeScrubbed(const int position) = 0;
+        virtual void onSetupRequested() = 0;
 
         virtual void onRepeatModeChangeRequested(const RepeatMode repeatMode) = 0;
         virtual void onEqStateChangeRequested(const bool activated) = 0;
