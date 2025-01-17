@@ -20,6 +20,7 @@ namespace ModPlugPlayer::Interfaces {
     public:
         //Getter Methods
         virtual int getVolume() const = 0;
+        virtual void setVolume(int volume) = 0;
         virtual bool isAlwaysOnTop() const = 0;
         virtual bool isTitleBarHidden() const = 0;
         virtual bool isSnapToViewPort() const = 0;
