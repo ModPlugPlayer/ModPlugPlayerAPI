@@ -54,7 +54,7 @@ namespace ModPlugPlayer::Interfaces {
 
         /*!
          * \brief repeatRequested is expected to be emitted when repeat mode is needed to be changed.
-         * \param repeatMode represents the repeat mode that is needed to be set. Possible values: None, SingleTrack, PlayList.
+         * \param repeatMode represents the repeat mode that is needed to be set. Possible values: None, Song, PlayList.
          */
         virtual void repeatRequested(const RepeatMode repeatMode) = 0;
 
@@ -137,7 +137,7 @@ namespace ModPlugPlayer::Interfaces {
         /*!
          * \brief onRepeatModeChanged is expected to handle new playlist state when playlist state is changed.
          * \param repeatMode represents the repeat mode that is needed to be set.
-         * Possible values: NoRepeat, RepeatTrack, LoopTrack, RepeatPlayList.
+         * Possible values: NoRepeat, RepeatSong, LoopSong, RepeatPlayList.
          */
         virtual void onRepeatModeChanged(const RepeatMode repeatMode) = 0;
 

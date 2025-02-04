@@ -75,8 +75,8 @@ namespace ModPlugPlayer::Interfaces {
 
         //Song Signals
         virtual void elapsedTimeChanged(const int seconds) = 0;
-        virtual void trackDurationChanged(const size_t songDurationSeconds) = 0;
-        virtual void trackTitleChanged(const QString songTitle) = 0;
+        virtual void songDurationChanged(const size_t songDurationSeconds) = 0;
+        virtual void songTitleChanged(const QString songTitle) = 0;
     };
 }
 
