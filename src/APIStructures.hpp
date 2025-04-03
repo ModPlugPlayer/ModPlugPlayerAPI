@@ -33,7 +33,7 @@ namespace ModPlugPlayer {
     };
 
 
-    enum class PlayerState {
+    enum class PlayingState {
         Playing,
         Paused,
         Stopped
@@ -179,10 +179,6 @@ namespace ModPlugPlayer {
     enum class PlayingMode {
         Song,
         PlayList
-    };
-
-    enum class PlayingStatus {
-        Stopped, Playing, Paused
     };
 
     enum class PlugInType {
