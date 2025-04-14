@@ -201,23 +201,62 @@ namespace ModPlugPlayer {
         unsigned int patch = 0;
         Stage stage = Stage::StableRelease;
         unsigned int stageRevision = 0;
-        inline std::string str();
+
+        inline std::string prettyString();
+        inline std::string technicalString();
     };
 }
 
-inline std::string ModPlugPlayer::Version::str() {
-    std::stringstream version;
-
+inline std::string ModPlugPlayer::Version::technicalString() {
+    std::ostringstream version;
     version << major << "." << minor;
 
-    if(patch != 0) {
-        version << "." << release << "." << patch;
-    }
-    else if(release != 0) {
+    if (release != 0 || patch != 0) {
         version << "." << release;
     }
 
-    switch(stage) {
+    if (patch != 0) {
+        version << "." << patch;
+    }
+
+    switch (stage) {
+        case Stage::PreAlpha:
+            version << "-pre-alpha";
+        break;
+        case Stage::Alpha:
+            version << "-alpha";
+        break;
+        case Stage::Beta:
+            version << "-beta";
+        break;
+        case Stage::ReleaseCandidate:
+            version << "-rc";
+        break;
+        case Stage::StableRelease:
+            break;
+        default:
+            break;
+    }
+
+    if (stage != Stage::StableRelease && stageRevision != 0)
+        version << "." << stageRevision;
+
+    return version.str();
+}
+
+inline std::string ModPlugPlayer::Version::prettyString() {
+    std::ostringstream version;
+    version << major << "." << minor;
+
+    if (release != 0 || patch != 0) {
+        version << "." << release;
+    }
+
+    if (patch != 0) {
+        version << "." << patch;
+    }
+
+    switch (stage) {
         case Stage::PreAlpha:
             version << " Pre-Alpha";
         break;
@@ -234,7 +273,7 @@ inline std::string ModPlugPlayer::Version::str() {
         break;
     }
 
-    if(stage != Stage::StableRelease && stageRevision != 0)
+    if (stage != Stage::StableRelease && stageRevision != 0)
         version << " " << stageRevision;
 
     return version.str();
