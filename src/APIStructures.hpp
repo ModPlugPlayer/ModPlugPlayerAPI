@@ -32,7 +32,6 @@ namespace ModPlugPlayer {
         bool successful = true;
     };
 
-
     enum class PlayingState {
         Playing,
         Paused,
@@ -75,6 +74,12 @@ namespace ModPlugPlayer {
         Pentaphonic = 5,
         Surround_5_1 = 6,
         Surround_7_1 = 8
+    };
+
+    struct SoundResolution {
+        BitRate bitRate = BitRate::Bits16;
+        SampleRate sampleRate = SampleRate::Hz44100;
+        ChannelMode channelMode = ChannelMode::Stereo;
     };
 
     enum class RepeatMode:int {
