@@ -76,10 +76,17 @@ namespace ModPlugPlayer {
         Surround_7_1 = 8
     };
 
+    enum class SampleDataFormat {
+        Float32 = 320,
+        Int32 = 32,
+        Int16 = 16
+    };
+
     struct SoundResolution {
         BitRate bitRate = BitRate::Bits16;
         SampleRate sampleRate = SampleRate::Hz44100;
         ChannelMode channelMode = ChannelMode::Stereo;
+        //SampleDataFormat sampleDataFormat; //SampleDataFormat will be enabled in future versions
     };
 
     enum class RepeatMode:int {
