@@ -86,7 +86,7 @@ namespace ModPlugPlayer {
         BitRate bitRate = BitRate::Bits16;
         SampleRate sampleRate = SampleRate::Hz44100;
         ChannelMode channelMode = ChannelMode::Stereo;
-        //SampleDataFormat sampleDataFormat; //SampleDataFormat will be enabled in future versions
+        SampleDataFormat sampleDataFormat = SampleDataFormat::Float32;
     };
 
     enum class RepeatMode:int {
