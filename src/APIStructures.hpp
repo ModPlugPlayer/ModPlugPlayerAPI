@@ -44,7 +44,7 @@ namespace ModPlugPlayer {
         Error
     };
 
-    enum class SampleRate:int {
+    enum class SamplingFrequency:int {
         Hz8000=8000,
         Hz9600=9600,
         Hz11025=11025,
@@ -60,7 +60,7 @@ namespace ModPlugPlayer {
         Hz192000=192000
     };
 
-    enum class BitRate:int {
+    enum class BitDepth:int {
         Bits8 = 8,
         Bits16 = 16,
         Bits24 = 24,
@@ -83,8 +83,8 @@ namespace ModPlugPlayer {
     };
 
     struct SoundResolution {
-        BitRate bitRate = BitRate::Bits16;
-        SampleRate sampleRate = SampleRate::Hz44100;
+        BitDepth bitDepth = BitDepth::Bits16;
+        SamplingFrequency sampleRate = SamplingFrequency::Hz44100;
         ChannelMode channelMode = ChannelMode::Stereo;
         SampleDataFormat sampleDataFormat = SampleDataFormat::Float32;
     };
