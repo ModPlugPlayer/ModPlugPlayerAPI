@@ -18,12 +18,15 @@ namespace ModPlugPlayer::Interfaces {
         virtual void initialize(size_t inputDataElementAmount) = 0;
         virtual void execute() = 0;
         virtual void close() = 0;
-        ~FFT();
+        bool isOpen();
+        virtual ~FFT() = default;
         T *fftInput = nullptr;
         std::complex<T> *fftOutput = nullptr;
+    protected:
+        bool open = false;
     };
 }
 
-template<class T> inline ModPlugPlayer::Interfaces::FFT<T>::~FFT(){
-    close();
+template<class T> inline bool ModPlugPlayer::Interfaces::FFT<T>::isOpen() {
+    return open;
 }
